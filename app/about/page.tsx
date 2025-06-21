@@ -129,7 +129,7 @@ export default function AboutPage() {
               </div>
 
               {/* Features Grid */}
-              <div className="mt-16">
+              {/* <div className="mt-16">
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {features.map((feature, index) => (
                     <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -147,7 +147,7 @@ export default function AboutPage() {
                     </Card>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </TabsContent>
 
             <TabsContent value="online-agents" className="mt-0">
@@ -184,7 +184,7 @@ export default function AboutPage() {
                     </p>
                   </div>
 
-                  <div className="mt-8 space-y-4">
+                  {/* <div className="mt-8 space-y-4">
                     <div className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                       <span className="text-gray-700">Live & real-time engagement</span>
@@ -201,7 +201,7 @@ export default function AboutPage() {
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                       <span className="text-gray-700">Increase revenue and customer satisfaction</span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </TabsContent>
@@ -253,7 +253,7 @@ export default function AboutPage() {
               </div>
 
               {/* Key Benefits */}
-              <div className="mt-16">
+              {/* <div className="mt-16">
                 <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
                   Key Benefits of Our Approach
                 </h3>
@@ -300,7 +300,7 @@ export default function AboutPage() {
                     </CardContent>
                   </Card>
                 </div>
-              </div>
+              </div> */}
             </TabsContent>
           </Tabs>
         </div>
