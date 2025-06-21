@@ -111,19 +111,10 @@ export default function AboutPage() {
                   </h2>
                   <div className="space-y-6 text-gray-700 leading-relaxed">
                     <p className="text-lg">
-                      Easy Outsourcing is an ultimate solution for all of your outsourcing needs. We provide 
-                      non-voice customer service as well as IT management services, serving many clients around 
-                      the world. In a nutshell, Easy Outsourcing is an ultimate BPO.
+                      Easy Outsourcing is a results-driven BPO company offering tailored outsourcing solutions for global clients. Our services include inbound and outbound customer support, live chat, email handling, virtual assistant services, and back-office operations.
                     </p>
                     <p className="text-lg">
-                      As one of the finest firms in the industry, we have the people, technology, and direction 
-                      to help you succeed. At Easy Outsourcing we prefer quality over quantity yet providing the 
-                      highest level of service at the lowest level of price.
-                    </p>
-                    <p className="text-lg">
-                      Our exceptional service standards make us the first choice of our clients. We use state of 
-                      the art IT infrastructure to cater to the needs of our clients and their customers. 
-                      So Easy Outsourcing means nonstop business for you.
+                      We also specialize in truck dispatch, freight coordination, medical billing, claims processing, data entry, telemarketing, and lead generation. With a focus on quality, efficiency, and customer satisfaction, Easy Outsourcing helps businesses scale faster with reliable and cost-effective support.
                     </p>
                   </div>
                 </div>
