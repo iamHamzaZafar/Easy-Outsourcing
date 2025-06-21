@@ -27,7 +27,7 @@ export default function HeroBanner() {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
-            From SaaS support to AI automation - we handle your business processes so you can focus on growth
+            Providing Customer Support and Satisfying Clients for over a Decade
           </p>
           <div className="flex justify-center">
             <Link href="/contact">

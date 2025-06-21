@@ -132,7 +132,7 @@ export default function Footer() {
                 </div>
               </div>
               
-              <div>
+              {/* <div>
                 <h4 className="font-semibold mb-3">Stay Updated</h4>
                 <div className="flex space-x-2">
                   <Input
@@ -144,7 +144,7 @@ export default function Footer() {
                     Subscribe
                   </Button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
