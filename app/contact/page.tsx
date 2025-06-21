@@ -66,13 +66,13 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+1 (555) 123-4567',
+      details: '+1 (614) 36-26055',
       description: '24/7 support available'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'New York, NY',
+      details: 'Columbus OH 43232',
       description: 'Our headquarters'
     },
     {
@@ -109,7 +109,7 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Ready to transform your business operations? Let's discuss how we can help you achieve your goals.
+              Ready to transform your business operations? Let&lsquo;s discuss how we can help you achieve your goals.
             </p>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                 Send Us a Message
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Fill out the form below and we'll get back to you within 24 hours. 
+                Fill out the form below and we&lsquo;ll get back to you within 24 hours. 
                 Our team is ready to discuss your specific needs and provide a customized solution.
               </p>
               
@@ -186,7 +186,7 @@ export default function ContactPage() {
                       Thank You!
                     </h3>
                     <p className="text-gray-600">
-                      Your message has been sent successfully. We'll get back to you within 24 hours.
+                      Your message has been sent successfully. We&rsquo;ll get back to you within 24 hours.
                     </p>
                   </div>
                 ) : (
