@@ -62,9 +62,9 @@ export default function HowItWorks() {
       badge: 'Logistics',
     },
     {
-      icon: Gift,
-      title: 'Free Trial',
-      description: 'Experience our service quality with a risk-free trial period before making any commitments.',
+      icon: Bot,
+      title: 'Chat Bots',
+      description: 'Custom AI-powered chatbots to enhance customer engagement and streamline your business operations.',
       badge: 'Risk-Free',
     },
   ];

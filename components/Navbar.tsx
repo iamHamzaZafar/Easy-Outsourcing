@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X, Settings, ChevronDown } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -11,12 +11,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -29,6 +27,7 @@ export default function Navbar() {
     { href: "/services/ai-automation", label: "AI Automation & Chatbots" },
     { href: "/services/data-entry", label: "Data Entry" },
     { href: "/services/truck-dispatching", label: "Truck Dispatching" },
+    { href: "/services/chat-bots", label: "Chat Bots" },
   ];
 
   const navLinks = [
@@ -45,12 +44,21 @@ export default function Navbar() {
         return;
       }
       const element = document.querySelector(href.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
     setIsServicesOpen(false);
+  };
+
+  const handleMouseEnter = () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200);
   };
 
   return (
@@ -76,43 +84,29 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) =>
-              link.href.startsWith("/#") ? (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`font-medium transition-colors hover:text-blue-600 ${
-                    isScrolled
-                      ? "text-gray-700"
-                      : "text-white/90 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`font-medium transition-colors hover:text-blue-600 ${
-                    isScrolled
-                      ? "text-gray-700"
-                      : "text-white/90 hover:text-white"
-                  } ${pathname === link.href ? "text-blue-600" : ""}`}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {/* Home */}
+            <Link
+              href="/"
+              className={`font-medium transition-colors ${
+                pathname === "/"
+                  ? "text-blue-600"
+                  : isScrolled
+                  ? "text-gray-700"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
+              Home
+            </Link>
 
             {/* Services Dropdown */}
-            <div className="relative">
+            <div
+              className="relative"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
-                onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
-                className={`font-medium transition-colors hover:text-blue-600 flex items-center ${
-                  isScrolled
-                    ? "text-gray-700"
-                    : "text-white/90 hover:text-white"
+                className={`font-medium transition-colors flex items-center ${
+                  isScrolled ? "text-gray-700" : "text-white/90 hover:text-white"
                 } ${pathname.startsWith("/services") ? "text-blue-600" : ""}`}
               >
                 Services
@@ -120,11 +114,7 @@ export default function Navbar() {
               </button>
 
               {isServicesOpen && (
-                <div
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setIsServicesOpen(false)}
-                  className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
-                >
+                <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
                   {services.map((service) => (
                     <Link
                       key={service.href}
@@ -138,6 +128,37 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* Other Links */}
+            {navLinks
+              .filter((link) => link.href !== "/")
+              .map((link) =>
+                link.href.startsWith("/#") ? (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className={`font-medium transition-colors hover:text-blue-600 ${
+                      isScrolled
+                        ? "text-gray-700"
+                        : "text-white/90 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`font-medium transition-colors hover:text-blue-600 ${
+                      isScrolled
+                        ? "text-gray-700"
+                        : "text-white/90 hover:text-white"
+                    } ${pathname === link.href ? "text-blue-600" : ""}`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
           </div>
 
           {/* Mobile menu button */}
@@ -161,30 +182,18 @@ export default function Navbar() {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg">
             <div className="px-4 py-2 space-y-2">
-              {navLinks.map((link) =>
-                link.href.startsWith("/#") ? (
-                  <button
-                    key={link.href}
-                    onClick={() => scrollToSection(link.href)}
-                    className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
-                  >
-                    {link.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors ${
-                      pathname === link.href ? "text-blue-600 bg-blue-50" : ""
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
+              {/* Home */}
+              <Link
+                href="/"
+                className={`block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors ${
+                  pathname === "/" ? "text-blue-600 bg-blue-50" : ""
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
 
-              {/* Mobile Services */}
+              {/* Services */}
               <div className="border-t border-gray-200 pt-2 mt-2">
                 <div className="px-3 py-2 text-sm font-semibold text-gray-500">
                   Services
@@ -200,6 +209,32 @@ export default function Navbar() {
                   </Link>
                 ))}
               </div>
+
+              {/* Other Nav Links */}
+              {navLinks
+                .filter((link) => link.href !== "/")
+                .map((link) =>
+                  link.href.startsWith("/#") ? (
+                    <button
+                      key={link.href}
+                      onClick={() => scrollToSection(link.href)}
+                      className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors ${
+                        pathname === link.href ? "text-blue-600 bg-blue-50" : ""
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
             </div>
           </div>
         )}
