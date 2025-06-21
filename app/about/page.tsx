@@ -225,7 +225,7 @@ export default function AboutPage() {
                     </p>
                     <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
                       <p className="text-lg font-semibold text-blue-800">
-                        It's a proven fact that clients are 3 times as likely to make a purchase, and will 
+                        It&lsquo;s a proven fact that clients are 3 times as likely to make a purchase, and will 
                         purchase 40% more if they have chatted with a live sales representative.
                       </p>
                     </div>
