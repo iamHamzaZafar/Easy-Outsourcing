@@ -45,7 +45,7 @@ export default function HowItWorks() {
     },
     {
       icon: Bot,
-      title: 'AI Automation & Chatbots',
+      title: 'AI Automation',
       description: 'Intelligent automation solutions and AI-powered chatbots to streamline your business processes.',
       badge: 'AI-Powered',
     },

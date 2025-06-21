@@ -105,7 +105,7 @@ export default function CustomerSupportPage() {
                 Deliver outstanding customer experiences with our professional support team. 
                 Available 24/7 to ensure your customers always receive the help they need.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
@@ -119,7 +119,7 @@ export default function CustomerSupportPage() {
                 >
                   View Demo
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img
@@ -205,7 +205,7 @@ export default function CustomerSupportPage() {
               Elevate Your Customer Support
             </h2>
             <p className="text-xl text-gray-600">
-              Let's discuss how we can improve your customer support experience
+              Let&rsquo;s discuss how we can improve your customer support experience
             </p>
           </div>
 

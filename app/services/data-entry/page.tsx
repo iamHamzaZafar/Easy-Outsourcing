@@ -94,7 +94,7 @@ export default function DataEntryPage() {
                 Professional data entry services with 99.95% accuracy rates. 
                 Fast, secure, and reliable data processing for businesses of all sizes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
@@ -108,7 +108,7 @@ export default function DataEntryPage() {
                 >
                   View Samples
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img

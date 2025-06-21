@@ -93,7 +93,7 @@ export default function AIAutomationPage() {
                 Transform your business with intelligent automation and AI-powered chatbots. 
                 Streamline operations, reduce costs, and provide exceptional customer experiences.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
@@ -107,7 +107,7 @@ export default function AIAutomationPage() {
                 >
                   Learn More
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img

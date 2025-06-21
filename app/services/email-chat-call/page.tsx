@@ -93,7 +93,7 @@ export default function EmailChatCallPage() {
                 Seamlessly connect with your customers across email, chat, and phone. 
                 Our integrated approach ensures consistent, high-quality support on every channel.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
@@ -107,7 +107,7 @@ export default function EmailChatCallPage() {
                 >
                   See Demo
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img

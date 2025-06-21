@@ -105,21 +105,14 @@ export default function AdminSupportPage() {
                 Free up your valuable time with our comprehensive administrative support services. 
                 From calendar management to document processing, we handle it all.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
                 >
                   Get Started
                 </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4"
-                >
-                  Learn More
-                </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img

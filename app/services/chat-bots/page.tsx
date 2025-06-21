@@ -107,7 +107,7 @@ export default function ChatbotSolutionsPage() {
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
                 Engage your users with AI chat assistants that deliver fast, consistent, and human-like responses — all day, every day.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
@@ -121,7 +121,7 @@ export default function ChatbotSolutionsPage() {
                 >
                   How It Works
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img

@@ -93,7 +93,7 @@ export default function TruckDispatchingPage() {
                 Optimize your fleet operations with our expert dispatching services. 
                 Reduce costs, improve efficiency, and maximize your transportation business potential.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4"
@@ -107,7 +107,7 @@ export default function TruckDispatchingPage() {
                 >
                   View Demo
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div className="relative">
               <img
