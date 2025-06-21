@@ -57,13 +57,13 @@ export default function HowItWorks() {
     },
     {
       icon: Truck,
-      title: 'Truck Dispatching',
+      title: 'Dispatch',
       description: 'Professional dispatching services optimizing routes, reducing costs, and improving delivery times.',
       badge: 'Logistics',
     },
     {
       icon: Bot,
-      title: 'Chat Bots',
+      title: 'ChatBots',
       description: 'Custom AI-powered chatbots to enhance customer engagement and streamline your business operations.',
       badge: 'Risk-Free',
     },

@@ -26,7 +26,7 @@ export default function Navbar() {
     { href: "/services/email-chat-call", label: "Email, Chat & Call Support" },
     { href: "/services/ai-automation", label: "AI Automation" },
     { href: "/services/data-entry", label: "Data Entry" },
-    { href: "/services/truck-dispatching", label: "Truck Dispatching" },
+    { href: "/services/dispatch", label: "Dispatch" },
     { href: "/services/chat-bots", label: "ChatBots" },
   ];
 

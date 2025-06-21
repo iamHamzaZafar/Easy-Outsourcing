@@ -90,7 +90,7 @@ export default function ContactPage() {
     'Email, Chat & Call Support',
     'AI Automation',
     'Data Entry',
-    'Truck Dispatching',
+    'Dispatch',
     'Chatbots',
     'Other'
   ];
