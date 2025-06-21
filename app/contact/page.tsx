@@ -61,19 +61,19 @@ export default function ContactPage() {
       icon: Mail,
       title: 'Email Us',
       details: 'hello@easyoutsourcing.com',
-      description: 'Send us an email anytime'
+      description: 'Send us an email'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+1 (614) 36-26055',
+      details: '+1 (614) 362-6055',
       description: '24/7 support available'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'Columbus OH 43232',
-      description: 'Our headquarters'
+      details: '2794 Tennyson Blvd D Columbus OH 43232',
+      description: 'Our HQ'
     },
     {
       icon: Clock,
@@ -88,9 +88,10 @@ export default function ContactPage() {
     'Admin Support',
     'Customer Support',
     'Email, Chat & Call Support',
-    'AI Automation & Chatbots',
+    'AI Automation',
     'Data Entry',
     'Truck Dispatching',
+    'Chatbots',
     'Other'
   ];
 

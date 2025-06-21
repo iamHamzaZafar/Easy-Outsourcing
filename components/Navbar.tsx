@@ -24,10 +24,10 @@ export default function Navbar() {
     { href: "/services/admin-support", label: "Admin Support" },
     { href: "/services/customer-support", label: "Customer Support" },
     { href: "/services/email-chat-call", label: "Email, Chat & Call Support" },
-    { href: "/services/ai-automation", label: "AI Automation & Chatbots" },
+    { href: "/services/ai-automation", label: "AI Automation" },
     { href: "/services/data-entry", label: "Data Entry" },
     { href: "/services/truck-dispatching", label: "Truck Dispatching" },
-    { href: "/services/chat-bots", label: "Chat Bots" },
+    { href: "/services/chat-bots", label: "ChatBots" },
   ];
 
   const navLinks = [
