@@ -19,13 +19,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { dropdown } from "@/app/constants/dropdown";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function TruckDispatchingPage() {
-  const [formData, setFormData] = useState({
+ const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     phone: "",
+    service: "",
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -34,9 +43,18 @@ export default function TruckDispatchingPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+   const handleSelectChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Form submitted:", formData);
     setIsSubmitted(true);
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -44,6 +62,7 @@ export default function TruckDispatchingPage() {
         email: "",
         company: "",
         phone: "",
+        service: "",
         message: "",
       });
     }, 3000);
@@ -210,7 +229,7 @@ export default function TruckDispatchingPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                   <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name">Full Name *</Label>
@@ -262,7 +281,23 @@ export default function TruckDispatchingPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="service">Service Interested In *</Label>
+                    <Select onValueChange={handleSelectChange} required>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {dropdown.map((service) => (
+                          <SelectItem key={service} value={service}>
+                            {service}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">Automation Requirements *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -271,13 +306,13 @@ export default function TruckDispatchingPage() {
                       required
                       rows={4}
                       className="mt-1"
-                      placeholder="Tell us what industry you need dispatching for, and how we can help..."
+                      placeholder="Describe your AI automation and chatbot needs..."
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3"
                   >
                     Submit Inquiry
                     <Send className="w-4 h-4 ml-2" />

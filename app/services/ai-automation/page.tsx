@@ -1,45 +1,72 @@
 "use client";
 
-import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Bot, Zap, Brain, Workflow, BarChart3, Shield, CheckCircle, Send } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import {
+  Bot,
+  Zap,
+  Brain,
+  Workflow,
+  BarChart3,
+  Shield,
+  CheckCircle,
+  Send,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { dropdown } from "@/app/constants/dropdown";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function AIAutomationPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    service: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSelectChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     setIsSubmitted(true);
-    
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        message: "",
       });
     }, 3000);
   };
@@ -47,51 +74,67 @@ export default function AIAutomationPage() {
   const solutions = [
     {
       icon: Bot,
-      title: 'AI Chatbots',
-      description: 'Intelligent chatbots that handle customer inquiries 24/7',
-      features: ['Natural language processing', 'Multi-language support', 'Learning capabilities', 'Seamless handoffs']
+      title: "AI Chatbots",
+      description: "Intelligent chatbots that handle customer inquiries 24/7",
+      features: [
+        "Natural language processing",
+        "Multi-language support",
+        "Learning capabilities",
+        "Seamless handoffs",
+      ],
     },
     {
       icon: Workflow,
-      title: 'Process Automation',
-      description: 'Automate repetitive tasks and streamline workflows',
-      features: ['Workflow optimization', 'Task automation', 'Integration APIs', 'Custom solutions']
+      title: "Process Automation",
+      description: "Automate repetitive tasks and streamline workflows",
+      features: [
+        "Workflow optimization",
+        "Task automation",
+        "Integration APIs",
+        "Custom solutions",
+      ],
     },
     {
       icon: Brain,
-      title: 'Machine Learning',
-      description: 'Advanced ML algorithms for predictive analytics',
-      features: ['Predictive modeling', 'Data analysis', 'Pattern recognition', 'Continuous learning']
-    }
+      title: "Machine Learning",
+      description: "Advanced ML algorithms for predictive analytics",
+      features: [
+        "Predictive modeling",
+        "Data analysis",
+        "Pattern recognition",
+        "Continuous learning",
+      ],
+    },
   ];
 
   const benefits = [
-    'Reduce operational costs by up to 70%',
-    'Handle 10x more customer inquiries',
-    '24/7 automated customer support',
-    'Improve response accuracy and consistency',
-    'Free up human agents for complex tasks',
-    'Scale operations without increasing headcount'
+    "Reduce operational costs by up to 70%",
+    "Handle 10x more customer inquiries",
+    "24/7 automated customer support",
+    "Improve response accuracy and consistency",
+    "Free up human agents for complex tasks",
+    "Scale operations without increasing headcount",
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-r from-purple-900 to-pink-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                AI Automation &{' '}
+                AI Automation &{" "}
                 <span className="bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
                   Chatbots
                 </span>
               </h1>
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Transform your business with intelligent automation and AI-powered chatbots. 
-                Streamline operations, reduce costs, and provide exceptional customer experiences.
+                Transform your business with intelligent automation and
+                AI-powered chatbots. Streamline operations, reduce costs, and
+                provide exceptional customer experiences.
               </p>
               {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
@@ -129,13 +172,17 @@ export default function AIAutomationPage() {
               Intelligent Automation Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Harness the power of AI to automate processes and enhance customer interactions
+              Harness the power of AI to automate processes and enhance customer
+              interactions
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {solutions.map((solution, index) => (
-              <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <Card
+                key={index}
+                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
                 <CardContent className="p-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-6">
                     <solution.icon className="w-8 h-8 text-white" />
@@ -143,12 +190,13 @@ export default function AIAutomationPage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     {solution.title}
                   </h3>
-                  <p className="text-gray-600 mb-6">
-                    {solution.description}
-                  </p>
+                  <p className="text-gray-600 mb-6">{solution.description}</p>
                   <ul className="space-y-2">
                     {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <li
+                        key={featureIndex}
+                        className="flex items-center text-sm text-gray-600"
+                      >
                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                         {feature}
                       </li>
@@ -169,7 +217,7 @@ export default function AIAutomationPage() {
               AI-Powered Performance
             </h2>
           </div>
-          
+
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-white mb-2">1M+</div>
@@ -200,8 +248,9 @@ export default function AIAutomationPage() {
                 Transform Your Business with AI
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Our AI automation solutions help businesses scale efficiently while maintaining 
-                high-quality customer experiences and reducing operational overhead.
+                Our AI automation solutions help businesses scale efficiently
+                while maintaining high-quality customer experiences and reducing
+                operational overhead.
               </p>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -244,7 +293,8 @@ export default function AIAutomationPage() {
                     Thank You!
                   </h3>
                   <p className="text-gray-600">
-                    Your inquiry has been submitted. Our AI automation specialist will contact you within 24 hours.
+                    Your inquiry has been submitted. Our AI automation
+                    specialist will contact you within 24 hours.
                   </p>
                 </div>
               ) : (
@@ -297,6 +347,22 @@ export default function AIAutomationPage() {
                         className="mt-1"
                       />
                     </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="service">Service Interested In *</Label>
+                    <Select onValueChange={handleSelectChange} required>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {dropdown.map((service) => (
+                          <SelectItem key={service} value={service}>
+                            {service}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div>

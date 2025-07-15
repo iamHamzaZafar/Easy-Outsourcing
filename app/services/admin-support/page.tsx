@@ -1,45 +1,77 @@
 "use client";
 
-import { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { User, Calendar, FileText, Mail, Phone, Clock, CheckCircle, Send } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import {
+  User,
+  Calendar,
+  FileText,
+  Mail,
+  Phone,
+  Clock,
+  CheckCircle,
+  Send,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import {dropdown} from '@/app/constants/dropdown'
 
 export default function AdminSupportPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    service: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    // Submit the full form data including selected service
+    console.log("Form submitted:", formData);
+
     setIsSubmitted(true);
-    
+
+    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        message: "",
       });
     }, 3000);
   };
@@ -47,63 +79,66 @@ export default function AdminSupportPage() {
   const services = [
     {
       icon: Calendar,
-      title: 'Calendar Management',
-      description: 'Professional scheduling and appointment coordination'
+      title: "Calendar Management",
+      description: "Professional scheduling and appointment coordination",
     },
     {
       icon: Mail,
-      title: 'Email Management',
-      description: 'Inbox organization, filtering, and response management'
+      title: "Email Management",
+      description: "Inbox organization, filtering, and response management",
     },
     {
       icon: FileText,
-      title: 'Document Processing',
-      description: 'Document creation, editing, and organization services'
+      title: "Document Processing",
+      description: "Document creation, editing, and organization services",
     },
     {
       icon: Phone,
-      title: 'Call Handling',
-      description: 'Professional phone answering and message taking'
+      title: "Call Handling",
+      description: "Professional phone answering and message taking",
     },
     {
       icon: User,
-      title: 'Virtual Assistant',
-      description: 'Dedicated virtual assistants for daily administrative tasks'
+      title: "Virtual Assistant",
+      description:
+        "Dedicated virtual assistants for daily administrative tasks",
     },
     {
       icon: Clock,
-      title: 'Time Management',
-      description: 'Task prioritization and deadline management'
-    }
+      title: "Time Management",
+      description: "Task prioritization and deadline management",
+    },
   ];
 
+
   const benefits = [
-    'Save 20+ hours per week on administrative tasks',
-    'Professional handling of all communications',
-    'Improved organization and efficiency',
-    'Cost-effective alternative to full-time staff',
-    'Flexible support based on your needs',
-    'Experienced administrative professionals'
+    "Save 20+ hours per week on administrative tasks",
+    "Professional handling of all communications",
+    "Improved organization and efficiency",
+    "Cost-effective alternative to full-time staff",
+    "Flexible support based on your needs",
+    "Experienced administrative professionals",
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-r from-purple-900 to-blue-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Professional{' '}
+                Professional{" "}
                 <span className="bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">
                   Admin Support
                 </span>
               </h1>
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Free up your valuable time with our comprehensive administrative support services. 
-                From calendar management to document processing, we handle it all.
+                Free up your valuable time with our comprehensive administrative
+                support services. From calendar management to document
+                processing, we handle it all.
               </p>
               {/* <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
@@ -134,7 +169,8 @@ export default function AdminSupportPage() {
               Complete Administrative Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our admin support services cover all aspects of business administration
+              Our admin support services cover all aspects of business
+              administration
             </p>
           </div>
 
@@ -148,9 +184,7 @@ export default function AdminSupportPage() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600">
-                    {service.description}
-                  </p>
+                  <p className="text-gray-600">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -167,7 +201,8 @@ export default function AdminSupportPage() {
                 Focus on What Matters Most
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Let our experienced administrative professionals handle the details while you focus on growing your business.
+                Let our experienced administrative professionals handle the
+                details while you focus on growing your business.
               </p>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -210,7 +245,8 @@ export default function AdminSupportPage() {
                     Thank You!
                   </h3>
                   <p className="text-gray-600">
-                    Your inquiry has been submitted. Our admin support specialist will contact you within 24 hours.
+                    Your inquiry has been submitted. Our admin support
+                    specialist will contact you within 24 hours.
                   </p>
                 </div>
               ) : (
@@ -266,7 +302,25 @@ export default function AdminSupportPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Administrative Support Needs *</Label>
+                    <Label htmlFor="service">Type of Admin Support *</Label>
+                    <Select onValueChange={handleSelectChange} required>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {dropdown.map((service) => (
+                          <SelectItem key={service} value={service}>
+                            {service}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">
+                      Administrative Support Needs *
+                    </Label>
                     <Textarea
                       id="message"
                       name="message"

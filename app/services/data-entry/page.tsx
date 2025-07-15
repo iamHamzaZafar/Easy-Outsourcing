@@ -9,14 +9,23 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { dropdown } from "@/app/constants/dropdown";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function DataEntryPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    message: ''
+ const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    service: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -27,19 +36,27 @@ export default function DataEntryPage() {
     });
   };
 
+   const handleSelectChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     setIsSubmitted(true);
-    
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        message: "",
       });
     }, 3000);
   };
@@ -249,7 +266,7 @@ export default function DataEntryPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+             <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name">Full Name *</Label>
@@ -301,7 +318,23 @@ export default function DataEntryPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Data Entry Project Details *</Label>
+                    <Label htmlFor="service">Service Interested In *</Label>
+                    <Select onValueChange={handleSelectChange} required>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {dropdown.map((service) => (
+                          <SelectItem key={service} value={service}>
+                            {service}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">Automation Requirements *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -310,13 +343,13 @@ export default function DataEntryPage() {
                       required
                       rows={4}
                       className="mt-1"
-                      placeholder="Describe your data entry requirements, volume, format, and timeline..."
+                      placeholder="Describe your AI automation and chatbot needs..."
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold py-3"
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3"
                   >
                     Submit Inquiry
                     <Send className="w-4 h-4 ml-2" />

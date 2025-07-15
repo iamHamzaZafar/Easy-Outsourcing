@@ -9,14 +9,23 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { dropdown } from "@/app/constants/dropdown";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function ChatbotSolutionsPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    service: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -27,19 +36,27 @@ export default function ChatbotSolutionsPage() {
     });
   };
 
+    const handleSelectChange = (value: string) => {
+    setFormData({
+      ...formData,
+      service: value,
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     setIsSubmitted(true);
-    
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        message: "",
       });
     }, 3000);
   };
@@ -261,7 +278,7 @@ export default function ChatbotSolutionsPage() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name">Full Name *</Label>
@@ -313,7 +330,23 @@ export default function ChatbotSolutionsPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">What do you want your chatbot to do? *</Label>
+                    <Label htmlFor="service">Service Interested In *</Label>
+                    <Select onValueChange={handleSelectChange} required>
+                      <SelectTrigger className="mt-1">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {dropdown.map((service) => (
+                          <SelectItem key={service} value={service}>
+                            {service}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">Automation Requirements *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -322,7 +355,7 @@ export default function ChatbotSolutionsPage() {
                       required
                       rows={4}
                       className="mt-1"
-                      placeholder="Briefly describe your chatbot use case (support, lead gen, WhatsApp bot, etc.)"
+                      placeholder="Describe your AI automation and chatbot needs..."
                     />
                   </div>
 
