@@ -20,7 +20,7 @@ export default function Navbar() {
   }, []);
 
   const services = [
-    { href: "/services/saas-bpo", label: "SaaS Business Process Outsourcing" },
+    { href: "/services/saas-bpo", label: "SaaS" },
     { href: "/services/admin-support", label: "Admin Support" },
     { href: "/services/customer-support", label: "Customer Support" },
     { href: "/services/email-chat-call", label: "Email, Chat & Call Support" },

@@ -60,7 +60,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: 'Email Us',
-      details: 'hello@easyoutsourcing.com',
+      details: 'info@easyoutsourcing.org',
       description: 'Send us an email'
     },
     {
@@ -84,7 +84,7 @@ export default function ContactPage() {
   ];
 
   const services = [
-    'SaaS Business Process Outsourcing',
+    'SaaS',
     'Admin Support',
     'Customer Support',
     'Email, Chat & Call Support',
@@ -119,27 +119,7 @@ export default function ContactPage() {
       {/* Contact Information */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <info.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {info.title}
-                  </h3>
-                  <p className="text-blue-600 font-medium mb-1">
-                    {info.details}
-                  </p>
-                  <p className="text-gray-600 text-sm">
-                    {info.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
+          
           {/* Contact Form */}
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
@@ -284,6 +264,27 @@ export default function ContactPage() {
               </CardContent>
             </Card>
           </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 mb-16">
+            {contactInfo.map((info, index) => (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <info.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {info.title}
+                  </h3>
+                  <p className="text-blue-600 font-medium mb-1">
+                    {info.details}
+                  </p>
+                  <p className="text-gray-600 text-sm">
+                    {info.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
         </div>
       </section>
 
