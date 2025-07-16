@@ -29,13 +29,23 @@ export default function HeroBanner() {
           <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
             Providing Customer Support and Satisfying Clients for over a Decade
           </p>
-          <div className="flex justify-center">
-            <Link href="/contact">
+          <div className="flex gap-4 justify-center">
+            
+             <Link href="/contact">
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all"
               >
                 Get Started Now
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link href="https://calendly.com/easyoutsourcing-info/30min">
+              <Button 
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all"
+              >
+                Let&rsquo;s Talk
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>

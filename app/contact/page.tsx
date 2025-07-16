@@ -25,7 +25,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: '2794 Tennyson Blvd D Columbus OH 43232',
+      details: '4200 Regent St Suite 200, Columbus, OH 43219',
       description: 'Our HQ'
     },
     {

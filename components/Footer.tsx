@@ -4,10 +4,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
   PhoneCall
 } from "lucide-react";
 import Link from "next/link";
@@ -35,8 +31,8 @@ export default function Footer() {
   const socialLinks = [
     // { icon: Facebook, href: "#", label: "Facebook" },
     // { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: PhoneCall, href: "#", label: "Whatsapp" },
+    // { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: PhoneCall, href: "https://wa.me/12319815225", label: "Whatsapp" },
   ];
 
   return (
@@ -127,7 +123,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-blue-400" />
-                  <p className="text-gray-300">2794 Tennyson Blvd D Columbus OH 43232</p>
+                  <p className="text-gray-300">4200 Regent St Suite 200, Columbus, OH 43219</p>
                 </div>
               </div>
             </div>
